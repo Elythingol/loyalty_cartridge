@@ -1,0 +1,16 @@
+<!--- applicable credit cards--->
+<div class="tab-pane loyalty-content" id="loyalty-content" role="tabpanel">
+    <fieldset class="payment-form-fields">
+
+        <!--- payment method is credit card --->
+        <input type="hidden" class="form-control"
+               name="${pdict.forms.billingForm.paymentMethod.htmlName}"
+               value="LOYALTY"
+        >
+        <div class="form-group">
+            <input type="text" class="form-control" name="" value="">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    
+    </fieldset>
+</div>
