@@ -1,0 +1,16 @@
+{
+    "hooks": [
+        {
+            "name": "app.payment.form.processor.loyalty",
+            "script": "./cartridge/scripts/hooks/loyaltyFormProcess.js"
+        },
+        {
+            "name": "app.payment.processor.loyalty",
+            "script": "./cartridge/scripts/hooks/loyaltyProcessPayment.js"
+        },
+        {
+            "name": "app.post.auth",
+            "script": "./cartridge/scripts/hooks/loyaltyProcessPayment.js"
+        }
+    ]
+}

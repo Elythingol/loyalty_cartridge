@@ -81,6 +81,7 @@ function findValue(formGroup, name) {
 module.exports = function (session) {
     return {
         getForm: function (name) {
+            var a = session.forms;
             var currentForm = session.forms[name];
             var result = parseForm(currentForm);
             result.base = currentForm;

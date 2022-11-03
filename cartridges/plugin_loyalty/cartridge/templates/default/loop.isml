@@ -1,0 +1,8 @@
+<isif condition="${pdict.isDisplay}">
+    <isloop items="${pdict.groups}" var="group" status="loopstatus">
+        ${group.ID}
+    </isloop>
+<iselse/>
+    Please login
+</isif>
+

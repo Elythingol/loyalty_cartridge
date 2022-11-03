@@ -1,0 +1,4 @@
+${pdict.date} <br />
+<isprint value="${pdict.date}" encoding="on" /> <br />
+${pdict.authStatus} <br />
+<isprint value="${pdict.authStatus}" encoding="on" />

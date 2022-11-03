@@ -2,7 +2,7 @@
     <isif condition="${paymentOption.ID === 'CREDIT_CARD'}">
         <isinclude template="checkout/billing/paymentOptions/creditCardContent" />
     </isif>
-    <isif condition="${paymentOption.ID === 'LOYALTY'}">
+    <isif condition="${paymentOption.ID === 'LOYALTY' && customer.authenticated}">
         <isinclude template="checkout/billing/paymentOptions/loyaltyContent" />
     </isif>
 </isloop>

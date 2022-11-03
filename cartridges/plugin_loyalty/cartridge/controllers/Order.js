@@ -1,5 +1,4 @@
 const server = require('server');
-const userLoggedIn = require('*/cartridge/scripts/middleware/userLoggedIn');
 server.extend(module.superModule);
 
 function getLoyaltyPercentage() {
@@ -31,17 +30,22 @@ function getLoyaltyPoints() {
   return customer.getProfile().custom.loyaltyPoints;
 }
 
-server.append('Confirm', userLoggedIn.validateLoggedIn, function (req, res, next) {
+server.append('Confirm', function (req, res, next) {
+  if (!req.currentCustomer.profile) {
+    return next();
+  }
+  this.on('route:BeforeComplete', function (req, res) {
+    res.setViewData({
+      loyalty: {
+        onAccount: getLoyaltyPoints(),
+        earned: loyaltyPoints
+      }
+    });
+  });
   const orderTotal = getOrderTotal(req.form.orderID);
   const loyaltyPercentage = getLoyaltyPercentage();
   const loyaltyPoints = calculateLoyaltyPoints(orderTotal, loyaltyPercentage);
   addLoyaltyPoints(loyaltyPoints);
-  res.setViewData({
-    loyalty: {
-      onAccount: getLoyaltyPoints(),
-      earned: loyaltyPoints
-    }
-  });
   return next();
 });
 

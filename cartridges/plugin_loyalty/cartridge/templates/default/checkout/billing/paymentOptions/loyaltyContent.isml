@@ -1,16 +1,19 @@
-<!--- applicable credit cards--->
 <div class="tab-pane loyalty-content" id="loyalty-content" role="tabpanel">
-    <fieldset class="payment-form-fields">
-
-        <!--- payment method is credit card --->
-        <input type="hidden" class="form-control"
-               name="${pdict.forms.billingForm.paymentMethod.htmlName}"
-               value="LOYALTY"
-        >
-        <div class="form-group">
-            <input type="text" class="form-control" name="" value="">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    
-    </fieldset>
+  <fieldset class="payment-form-fields">
+    <isif condition="${pdict.loyalty.appliedAmount === 0}">
+    <input type="hidden" class="form-control" name="${pdict.forms.billingForm.paymentMethod.htmlName}" value="LOYALTY">
+    <div class="form-group" class="loyalty-form" data-points="${pdict.loyalty.onAccount}">
+    <label for="pointsToRedeem">You have ${pdict.loyalty.onAccount} points</label>
+    <input type="text" class="form-control" id="pointsToRedeem" name="${pdict.forms.billingForm.pointsToRedeem.htmlName}">
+    </div>
+    <button type="submit" class="btn btn-primary loyalty-submit">Submit</button>
+<iselse>
+    <div>You applied ${pdict.loyalty.appliedAmount} points</div>
+    <button type="submit" class="btn btn-primary loyalty-remove" data-url="${pdict.loyalty.removeUrl}">Remove</button>
+</isif>
+  </fieldset>
 </div>
+<isscript> 
+  var assets = require('*/cartridge/scripts/assets.js'); 
+  assets.addJs('/js/loyalty.js'); 
+</isscript>
