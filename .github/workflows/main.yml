@@ -1,9 +1,7 @@
 name: Say Hello
 
 on:
-  push:
-    branches:
-      - main  # or replace with your target branch
+  workflow_dispatch:
 
 jobs:
   hello-world:
